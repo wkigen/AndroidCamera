@@ -154,7 +154,7 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
                 @Override
                 public void run() {
                     GPUImageNativeLibrary.YUVtoRBGA(data, previewSize.width, previewSize.height,
-                            mGLRgbBuffer.array());
+                            mGLRgbBuffer.array(),true);
                     mGLTextureId = OpenGlUtils.loadTexture(mGLRgbBuffer, previewSize, mGLTextureId);
                     camera.addCallbackBuffer(data);
 

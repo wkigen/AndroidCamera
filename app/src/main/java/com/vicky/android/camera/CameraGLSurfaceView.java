@@ -27,13 +27,13 @@ public class CameraGLSurfaceView extends GLSurfaceView {
         super(context, attrs);
         this.context = context;
 
-        renderer = new NomalRenderer(new GPUImageFilter(),(Activity)context);
+        renderer = new NomalRenderer((Activity)context,this,new GPUImageFilter());
 
         setEGLContextClientVersion(2);
         setEGLConfigChooser(8, 8, 8, 8, 16, 0);
         getHolder().setFormat(PixelFormat.RGBA_8888);
         setRenderer(renderer);
-        setRenderMode(RENDERMODE_CONTINUOUSLY);
+        setRenderMode(RENDERMODE_WHEN_DIRTY);
         requestRender();
     }
 

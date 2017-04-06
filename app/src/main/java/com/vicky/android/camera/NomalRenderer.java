@@ -16,15 +16,16 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * Created by vicky on 2017/4/6.
  */
-public class NomalRenderer extends GPUImageRenderer {
+public class NomalRenderer extends GPUImageRenderer implements SurfaceTexture.OnFrameAvailableListener{
 
     private Activity activity;
+    private CameraGLSurfaceView surfaceView;
 
-    public NomalRenderer(GPUImageFilter filter,Activity activity) {
+    public NomalRenderer(Activity activity,CameraGLSurfaceView surfaceView,GPUImageFilter filter) {
         super(filter);
         this.activity = activity;
-
-        setRotation(Rotation.ROTATION_270, false, false);
+        this.surfaceView = surfaceView;
+        setRotation(Rotation.ROTATION_90, false, false);
     }
 
     @Override
@@ -34,11 +35,19 @@ public class NomalRenderer extends GPUImageRenderer {
         CameraManager.getInstance().openFront();
         CameraManager.getInstance().setPreviewCallBack(this);
         CameraManager.getInstance().setDisplayOrientation(activity);
+
+        mSurfaceTexture = new SurfaceTexture(GLESUtils.createTexture());
+        mSurfaceTexture.setOnFrameAvailableListener(this);
     }
 
     @Override
     public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
         super.onSurfaceChanged(gl,width,height);
         CameraManager.getInstance().startPreview(mSurfaceTexture, width, height);
+    }
+
+    @Override
+    public void onFrameAvailable(SurfaceTexture surfaceTexture) {
+        surfaceView.requestRender();
     }
 }
