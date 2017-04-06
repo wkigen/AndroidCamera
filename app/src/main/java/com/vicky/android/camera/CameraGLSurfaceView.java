@@ -1,5 +1,6 @@
 package com.vicky.android.camera;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.SurfaceTexture;
@@ -26,7 +27,7 @@ public class CameraGLSurfaceView extends GLSurfaceView {
         super(context, attrs);
         this.context = context;
 
-        renderer = new NomalRenderer(new GPUImageFilter());
+        renderer = new NomalRenderer(new GPUImageFilter(),(Activity)context);
 
         setEGLContextClientVersion(2);
         setEGLConfigChooser(8, 8, 8, 8, 16, 0);

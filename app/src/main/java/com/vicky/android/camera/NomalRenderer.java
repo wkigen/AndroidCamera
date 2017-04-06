@@ -1,5 +1,7 @@
 package com.vicky.android.camera;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 
@@ -16,10 +18,13 @@ import javax.microedition.khronos.opengles.GL10;
  */
 public class NomalRenderer extends GPUImageRenderer {
 
-    public NomalRenderer(GPUImageFilter filter) {
-        super(filter);
+    private Activity activity;
 
-        setRotation(Rotation.ROTATION_90, false, false);
+    public NomalRenderer(GPUImageFilter filter,Activity activity) {
+        super(filter);
+        this.activity = activity;
+
+        setRotation(Rotation.ROTATION_270, false, false);
     }
 
     @Override
@@ -28,7 +33,7 @@ public class NomalRenderer extends GPUImageRenderer {
 
         CameraManager.getInstance().openFront();
         CameraManager.getInstance().setPreviewCallBack(this);
-
+        CameraManager.getInstance().setDisplayOrientation(activity);
     }
 
     @Override
