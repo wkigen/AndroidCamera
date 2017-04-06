@@ -42,4 +42,5 @@ public class CameraGLSurfaceView extends GLSurfaceView {
     public NomalRenderer getRenderer(){
         return renderer;
     }
+
 }
