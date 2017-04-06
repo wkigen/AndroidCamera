@@ -3,9 +3,6 @@ package com.vicky.android.camera;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
@@ -13,7 +10,6 @@ import android.view.SurfaceHolder;
 import com.vicky.android.baselib.camera.CameraManager;
 
 import com.vicky.android.gpuimage.GPUImageFilter;
-import com.vicky.android.gpuimage.GPUImageRenderer;
 
 /**
  * Created by vicky on 2017/4/3.
@@ -42,4 +38,7 @@ public class CameraGLSurfaceView extends GLSurfaceView {
         CameraManager.getInstance().stopPreview();
     }
 
+    public NomalRenderer getRenderer(){
+        return renderer;
+    }
 }
