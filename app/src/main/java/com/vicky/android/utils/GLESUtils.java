@@ -1,4 +1,4 @@
-package com.vicky.android.camera;
+package com.vicky.android.utils;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;

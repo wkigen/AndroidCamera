@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <com.vicky.android.camera.CameraGLSurfaceView
+    <com.vicky.android.view.view.CameraGLSurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/surfaceView" />

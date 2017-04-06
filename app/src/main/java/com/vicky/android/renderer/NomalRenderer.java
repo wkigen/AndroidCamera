@@ -1,14 +1,14 @@
-package com.vicky.android.camera;
+package com.vicky.android.renderer;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
 
 import com.vicky.android.baselib.camera.CameraManager;
 import com.vicky.android.gpuimage.GPUImageFilter;
 import com.vicky.android.gpuimage.GPUImageRenderer;
 import com.vicky.android.gpuimage.Rotation;
+import com.vicky.android.utils.GLESUtils;
+import com.vicky.android.view.view.CameraGLSurfaceView;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

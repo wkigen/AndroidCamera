@@ -1,6 +1,5 @@
 package com.vicky.android.view.activity.camera;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -8,7 +7,7 @@ import android.view.View;
 import com.vicky.android.R;
 import com.vicky.android.baselib.mvvm.IView;
 import com.vicky.android.view.activity.base.BaseActivity;
-import com.vicky.android.camera.CameraGLSurfaceView;
+import com.vicky.android.view.view.CameraGLSurfaceView;
 import com.vicky.android.viewmodel.camera.MainVM;
 
 import butterknife.Bind;

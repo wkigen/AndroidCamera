@@ -1,4 +1,4 @@
-package com.vicky.android.camera;
+package com.vicky.android.view.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.SurfaceHolder;
 
 import com.vicky.android.baselib.camera.CameraManager;
 
+import com.vicky.android.renderer.NomalRenderer;
 import com.vicky.android.gpuimage.GPUImageFilter;
 
 /**
@@ -17,7 +18,7 @@ import com.vicky.android.gpuimage.GPUImageFilter;
 public class CameraGLSurfaceView extends GLSurfaceView {
 
     private Context             context;
-    private NomalRenderer       renderer;
+    private NomalRenderer renderer;
 
     public CameraGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
