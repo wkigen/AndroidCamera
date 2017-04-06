@@ -10,6 +10,13 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        ndk {
+            moduleName "camera-library"
+            stl "gnustl_shared"
+            abiFilters 'armeabi', 'x86' //'x86_64','armeabi-v7a',  'arm64-v8a'
+            ldLibs "log"
+        }
     }
     buildTypes {
         release {
@@ -17,6 +24,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
