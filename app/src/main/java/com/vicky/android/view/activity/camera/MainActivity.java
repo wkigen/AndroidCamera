@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.vicky.android.R;
+import com.vicky.android.baselib.camera.CameraManager;
 import com.vicky.android.baselib.mvvm.IView;
 import com.vicky.android.baselib.widget.SimplePopupWindow;
 import com.vicky.android.view.activity.base.BaseActivity;
@@ -83,6 +84,12 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
 
+    }
+
+    @Override
+    public  void onDestroy(){
+        super.onDestroy();
+        CameraManager.getInstance().stopPreview();
     }
 
     private void showFilter(){

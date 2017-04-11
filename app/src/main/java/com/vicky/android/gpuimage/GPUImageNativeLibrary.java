@@ -18,7 +18,7 @@ package com.vicky.android.gpuimage;
 
 public class GPUImageNativeLibrary {
     static {
-        System.loadLibrary("camera-library");
+        System.loadLibrary("core");
     }
 
     public static native void YUVtoRBGA(byte[] yuv, int width, int height, int[] out,boolean horizontalFlip);

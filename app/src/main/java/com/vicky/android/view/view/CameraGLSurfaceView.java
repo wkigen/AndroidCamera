@@ -36,7 +36,7 @@ public class CameraGLSurfaceView extends GLSurfaceView {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        CameraManager.getInstance().stopPreview();
+        CameraManager.getInstance().pausePreview();
     }
 
     public NomalRenderer getRenderer(){

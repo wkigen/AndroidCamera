@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import com.vicky.android.baselib.runtimepermission.PermissionsManager;
 import com.vicky.android.baselib.runtimepermission.PermissionsResultAction;
 import com.vicky.android.bean.camera.FilterBean;
+import com.vicky.android.gpuimage.GPUImageBilateralFilter;
 import com.vicky.android.gpuimage.GPUImageBrightnessFilter;
 import com.vicky.android.gpuimage.GPUImageCGAColorspaceFilter;
 import com.vicky.android.gpuimage.GPUImageDilationFilter;
@@ -123,6 +124,7 @@ public class MainVM extends AbstractViewModel<MainActivity> {
 
     private void loadFilter(){
 
+        filterList.add(new FilterBean("GPUImageBilateralFilter", new GPUImageBilateralFilter())) ;
         filterList.add(new FilterBean("GPUImageDilationFilter", new GPUImageDilationFilter())) ;
         filterList.add(new FilterBean("GPUImageDirectionalSobelEdgeDetectionFilter", new GPUImageDirectionalSobelEdgeDetectionFilter())) ;
         filterList.add(new FilterBean("GPUImageDissolveBlendFilter", new GPUImageDissolveBlendFilter())) ;
