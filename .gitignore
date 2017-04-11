@@ -40,3 +40,5 @@ captures/
 *.jks
 
 #opencv libs
+opencv/src/main/libs
+opencv/src/main/obj
