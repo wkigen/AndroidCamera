@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-JNIEXPORT jintArray JNICALL Java_cn_edu_zafu_opencv_OpenCVHelper_gray
+JNIEXPORT jintArray JNICALL Java_org_opencv_jni_OpencvHelper_gray
         (JNIEnv *, jclass, jintArray, jint, jint);
 
 #ifdef __cplusplus
