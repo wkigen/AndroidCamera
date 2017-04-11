@@ -26,6 +26,8 @@ import android.hardware.Camera.Size;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 
+import org.opencv.jni.OpencvHelper;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import java.io.IOException;
@@ -155,6 +157,7 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
                 public void run() {
                     GPUImageNativeLibrary.YUVtoRBGA(data, previewSize.width, previewSize.height,
                             mGLRgbBuffer.array(),true);
+                    OpencvHelper.gray(mGLRgbBuffer.array(), previewSize.width, previewSize.height);
                     mGLTextureId = OpenGlUtils.loadTexture(mGLRgbBuffer, previewSize, mGLTextureId);
                     camera.addCallbackBuffer(data);
 

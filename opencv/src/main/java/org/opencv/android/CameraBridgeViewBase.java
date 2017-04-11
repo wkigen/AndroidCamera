@@ -5,7 +5,7 @@ import java.util.List;
 import org.opencv.BuildConfig;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
-import org.opencv.opencv.R;
+import org.opencv.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

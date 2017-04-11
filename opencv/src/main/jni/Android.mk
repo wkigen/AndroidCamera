@@ -6,7 +6,7 @@ OpenCV_INSTALL_MODULES:=on
 OPENCV_CAMERA_MODULES:=off
 
 
-OPENCV_LIB_TYPE:=STATIC
+OPENCV_LIB_TYPE:=SHARED
 
 
 ifeq ("$(wildcard $(OPENCV_MK_PATH))","")
@@ -17,7 +17,7 @@ endif
 
 
 LOCAL_MODULE    := opencv
-LOCAL_SRC_FILES :=
+LOCAL_SRC_FILES := opencv_helper.cpp
 
 LOCAL_LDLIBS    += -lm -llog 
 			
