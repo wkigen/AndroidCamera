@@ -9,6 +9,9 @@ extern "C" {
 JNIEXPORT jintArray JNICALL Java_org_opencv_jni_OpencvHelper_gray
         (JNIEnv *, jclass, jintArray, jint, jint);
 
+JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasion(
+        JNIEnv *env, jclass obj, jintArray, jint, jint,jint);
+
 #ifdef __cplusplus
 }
 #endif

@@ -17,8 +17,13 @@ endif
 
 
 LOCAL_MODULE    := opencv
-LOCAL_SRC_FILES := opencv_helper.cpp
+LOCAL_SRC_FILES := opencv_helper.cpp \
+                    conver.cpp \
+                    utils.cpp
 
+
+
+LOCAL_CPPFLAGS := -std=c++11
 LOCAL_LDLIBS    += -lm -llog 
 			
 include $(BUILD_SHARED_LIBRARY) 

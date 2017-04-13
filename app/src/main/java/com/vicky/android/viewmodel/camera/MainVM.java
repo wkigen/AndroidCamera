@@ -76,6 +76,7 @@ import java.util.List;
  ************************************************************/
 public class MainVM extends AbstractViewModel<MainActivity> {
 
+
     private boolean getPermisions = false;
     private NomalRenderer renderer;
     private List<FilterBean> filterList = new ArrayList<>();
@@ -125,58 +126,6 @@ public class MainVM extends AbstractViewModel<MainActivity> {
     private void loadFilter(){
 
         filterList.add(new FilterBean("GPUImageBilateralFilter", new GPUImageBilateralFilter())) ;
-        filterList.add(new FilterBean("GPUImageDilationFilter", new GPUImageDilationFilter())) ;
-        filterList.add(new FilterBean("GPUImageDirectionalSobelEdgeDetectionFilter", new GPUImageDirectionalSobelEdgeDetectionFilter())) ;
-        filterList.add(new FilterBean("GPUImageDissolveBlendFilter", new GPUImageDissolveBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageDivideBlendFilter", new GPUImageDivideBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageEmbossFilter", new GPUImageEmbossFilter())) ;
-        filterList.add(new FilterBean("GPUImageExclusionBlendFilter", new GPUImageExclusionBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageExposureFilter", new GPUImageExposureFilter())) ;
-        filterList.add(new FilterBean("GPUImageFalseColorFilter", new GPUImageFalseColorFilter())) ;
-        filterList.add(new FilterBean("GPUImageFilter", new GPUImageFilter())) ;
-        filterList.add(new FilterBean("GPUImageGammaFilter", new GPUImageGammaFilter())) ;
-        filterList.add(new FilterBean("GPUImageGaussianBlurFilter", new GPUImageGaussianBlurFilter())) ;
-        filterList.add(new FilterBean("GPUImageGlassSphereFilter", new GPUImageGlassSphereFilter())) ;
-        filterList.add(new FilterBean("GPUImageGrayscaleFilter", new GPUImageGrayscaleFilter())) ;
-        filterList.add(new FilterBean("GPUImageHalftoneFilter", new GPUImageHalftoneFilter())) ;
-        filterList.add(new FilterBean("GPUImageHardLightBlendFilter", new GPUImageHardLightBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageHazeFilter", new GPUImageHazeFilter())) ;
-        filterList.add(new FilterBean("GPUImageHighlightShadowFilter", new GPUImageHighlightShadowFilter())) ;
-        filterList.add(new FilterBean("GPUImageHueBlendFilter", new GPUImageHueBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageHueFilter", new GPUImageHueFilter())) ;
-        filterList.add(new FilterBean("GPUImageKuwaharaFilter", new GPUImageKuwaharaFilter())) ;
-        filterList.add(new FilterBean("GPUImageLaplacianFilter", new GPUImageLaplacianFilter())) ;
-        filterList.add(new FilterBean("GPUImageLevelsFilter", new GPUImageLevelsFilter())) ;
-        filterList.add(new FilterBean("GPUImageLightenBlendFilter", new GPUImageLightenBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageLinearBurnBlendFilter", new GPUImageLinearBurnBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageLookupFilter", new GPUImageLookupFilter())) ;
-        filterList.add(new FilterBean("GPUImageLuminosityBlendFilter", new GPUImageLuminosityBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageMonochromeFilter", new GPUImageMonochromeFilter())) ;
-        filterList.add(new FilterBean("GPUImageMultiplyBlendFilter", new GPUImageMultiplyBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageNonMaximumSuppressionFilter", new GPUImageNonMaximumSuppressionFilter())) ;
-        filterList.add(new FilterBean("GPUImageNormalBlendFilter", new GPUImageNormalBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageOpacityFilter", new GPUImageOpacityFilter())) ;
-        filterList.add(new FilterBean("GPUImageOverlayBlendFilter", new GPUImageOverlayBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImagePixelationFilter", new GPUImagePixelationFilter())) ;
-        filterList.add(new FilterBean("GPUImagePosterizeFilter", new GPUImagePosterizeFilter())) ;
-        filterList.add(new FilterBean("GPUImageRGBDilationFilter", new GPUImageRGBDilationFilter())) ;
-        filterList.add(new FilterBean("GPUImageRGBFilter", new GPUImageRGBFilter())) ;
-        filterList.add(new FilterBean("GPUImageSaturationBlendFilter", new GPUImageSaturationBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageSaturationFilter", new GPUImageSaturationFilter())) ;
-        filterList.add(new FilterBean("GPUImageScreenBlendFilter", new GPUImageScreenBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageSepiaFilter", new GPUImageSepiaFilter()));
-        filterList.add(new FilterBean("GPUImageSharpenFilter", new GPUImageSharpenFilter())) ;
-        filterList.add(new FilterBean("GPUImageSketchFilter", new GPUImageSketchFilter())) ;
-        filterList.add(new FilterBean("GPUImageSmoothToonFilter", new GPUImageSmoothToonFilter())) ;
-        filterList.add(new FilterBean("GPUImageSobelEdgeDetection", new GPUImageSobelEdgeDetection())) ;
-        filterList.add(new FilterBean("GPUImageSobelThresholdFilter", new GPUImageSobelThresholdFilter())) ;
-        filterList.add(new FilterBean("GPUImageSoftLightBlendFilter", new GPUImageSoftLightBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageSourceOverBlendFilter", new GPUImageSourceOverBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageSphereRefractionFilter", new GPUImageSphereRefractionFilter())) ;
-        filterList.add(new FilterBean("GPUImageSubtractBlendFilter", new GPUImageSubtractBlendFilter())) ;
-        filterList.add(new FilterBean("GPUImageSwirlFilter", new GPUImageSwirlFilter())) ;
-        filterList.add(new FilterBean("GPUImageThresholdEdgeDetection", new GPUImageThresholdEdgeDetection())) ;
-        filterList.add(new FilterBean("GPUImageToneCurveFilter", new GPUImageToneCurveFilter())) ;
     }
 
     public List<FilterBean> getFilter(){

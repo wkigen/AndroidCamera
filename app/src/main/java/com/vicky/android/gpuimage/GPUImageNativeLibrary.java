@@ -21,6 +21,7 @@ public class GPUImageNativeLibrary {
         System.loadLibrary("core");
     }
 
+    //horizontalFlip 是否水平翻转
     public static native void YUVtoRBGA(byte[] yuv, int width, int height, int[] out,boolean horizontalFlip);
 
     public static native void YUVtoARBG(byte[] yuv, int width, int height, int[] out);

@@ -10,6 +10,10 @@ import com.vicky.android.gpuimage.Rotation;
 import com.vicky.android.utils.GLESUtils;
 import com.vicky.android.view.view.CameraGLSurfaceView;
 
+import org.opencv.jni.OpencvHelper;
+
+import java.nio.IntBuffer;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -50,4 +54,11 @@ public class NomalRenderer extends GPUImageRenderer implements SurfaceTexture.On
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
         surfaceView.requestRender();
     }
+
+    @Override
+    protected void operateDate(IntBuffer intBuffer,int width,int height){
+        //OpencvHelper.gray(intBuffer.array(), width, height);
+        OpencvHelper.dermabrasion(intBuffer.array(), width, height,100);
+    }
+
 }
