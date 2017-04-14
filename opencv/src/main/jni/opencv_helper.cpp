@@ -34,7 +34,6 @@ JNIEXPORT jintArray JNICALL Java_org_opencv_jni_OpencvHelper_gray(
     uchar* ptr = imgData.ptr(0);
     for(int i = 0; i < w*h; i ++){
         //计算公式：Y(亮度) = 0.299*R + 0.587*G + 0.114*B
-        //对于一个int四字节，其彩色值存储方式为：BGRA
         int grayScale = (int)(ptr[4*i+2]*0.299 + ptr[4*i+1]*0.587 + ptr[4*i+0]*0.114);
         ptr[4*i+1] = grayScale;
         ptr[4*i+2] = grayScale;
@@ -80,7 +79,6 @@ JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasion(
     uint32_t* integralPtr = (uint32_t*)integralData.ptr(0);
     uint32_t* integralSqrPtr = (uint32_t*)integralSqrData.ptr(0);
 
-    /*
     for(int i = 1; i < height; i++){
         for(int j = 1; j < width; j++){
             int offset = i * width + j;
@@ -111,13 +109,49 @@ JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasion(
             }
         }
     }
-     */
 
     //转换成RGBA
     Conver::YCbCrToRGBA(yuvPtr,imgPtr,len);
 
     env->ReleasePrimitiveArrayCritical( buf, rgbData, 0);
 
+}
+
+JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_checkSkin(
+        JNIEnv *env, jclass obj, jintArray buf, int width, int height)
+{
+    jint *rgbData = (jint*) (env->GetPrimitiveArrayCritical( buf, JNI_FALSE));
+    if (rgbData == NULL) {
+        return;
+    }
+
+    Mat imgData(height, width, CV_8UC4, (unsigned char *) rgbData);
+    Mat skinData(width,height,CV_8UC1,Scalar(0));
+    uint8_t* skinPtr = skinData.ptr(0);
+    uint8_t* imgPtr = imgData.ptr(0);
+
+    //检测皮肤
+    Utils::checkIsSkin(imgData.ptr(0),skinData.ptr(0),width,height);
+
+    for (int ii = 0; ii < height; ++ii) {
+        for (int jj = 0; jj < width; ++jj) {
+            int offset = ii * width + jj;
+            int offset2 =offset *4;
+            if(skinPtr[offset] == 255){
+                imgPtr[offset2] = 255;
+                imgPtr[offset2 + 1] = 255;
+                imgPtr[offset2 + 2] = 255;
+                imgPtr[offset2 + 3] = 255;
+            } else{
+                imgPtr[offset2 ] = 0;
+                imgPtr[offset2 + 1] = 0;
+                imgPtr[offset2+ 2] = 0;
+                imgPtr[offset2 + 3] = 255;
+            }
+        }
+    }
+
+    env->ReleasePrimitiveArrayCritical( buf, rgbData, 0);
 }
 
 }

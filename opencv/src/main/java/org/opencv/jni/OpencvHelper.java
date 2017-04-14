@@ -10,6 +10,6 @@ public class OpencvHelper {
     }
 
     public static native int[] gray(int[] buf, int w, int h);
-
+    public static native void checkSkin(int[] buf, int w, int h,int lv);
     public static native void dermabrasion(int[] buf, int w, int h,int lv);
 }

@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.vicky.android.R;
 import com.vicky.android.baselib.camera.CameraManager;
@@ -24,23 +25,26 @@ import com.vicky.android.viewmodel.camera.MainVM;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Author:  wangqiji
  * Description:
  * Date:
  */
-public class MainActivity extends BaseActivity<MainActivity, MainVM> implements IView {
+public class MainActivity extends BaseActivity<MainActivity, MainVM> implements IView ,View.OnClickListener{
 
     @Bind(R.id.surfaceView)
     CameraGLSurfaceView surfaceView;
-    @Bind(R.id.im_show_filter)
-    ImageButton imShowFilter;
     @Bind(R.id.fl_main)
     FrameLayout flMain;
+    @Bind(R.id.rl_mian)
+    RelativeLayout rlMian;
 
+    private boolean isShowMenu = false;
     private FilterAdapter adapter;
     private SimplePopupWindow filterPW;
+    private SimplePopupWindow menuPW;
 
     @Override
     protected int tellMeLayout() {
@@ -58,13 +62,6 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
 
         adapter = new FilterAdapter(this);
         adapter.setDatas(getViewModel().getFilter());
-
-        imShowFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showFilter();
-            }
-        });
 
         getViewModel().setRenderer(surfaceView.getRenderer());
     }
@@ -87,17 +84,43 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
     }
 
     @Override
-    public  void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         CameraManager.getInstance().stopPreview();
     }
 
-    private void showFilter(){
-        if (filterPW == null){
+    @Override
+    public void onBackPressed() {
+        if (filterPW != null) {
+            filterPW.dismiss();
+            filterPW = null;
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-            View view  = getLayoutInflater().inflate(R.layout.item_filter_list, null);
-            LinearLayout llMain = (LinearLayout)view.findViewById(R.id.ll_main);
-            ListView listViewFilter = (ListView)view.findViewById(R.id.ls_filter);
+    @OnClick({R.id.rl_mian})
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rl_mian:
+                showMenu();
+                break;
+            case R.id.rl_filter:
+                if (menuPW != null)
+                    menuPW.dismiss();
+                showFilter();
+                break;
+        }
+    }
+
+
+    private void showFilter() {
+        if (filterPW == null) {
+
+            View view = getLayoutInflater().inflate(R.layout.item_filter_list, null);
+            LinearLayout llMain = (LinearLayout) view.findViewById(R.id.ll_main);
+            ListView listViewFilter = (ListView) view.findViewById(R.id.ls_filter);
             listViewFilter.setAdapter(adapter);
             listViewFilter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -121,14 +144,29 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
         filterPW.showAtLocation(flMain, Gravity.RIGHT, 0, 0, false);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (filterPW!=null) {
-            filterPW.dismiss();
-            filterPW = null;
+    private void showMenu(){
+        if (menuPW == null){
+            View view = getLayoutInflater().inflate(R.layout.item_menu, null);
+            RelativeLayout llMain = (RelativeLayout) view.findViewById(R.id.ll_main);
+            RelativeLayout rlFilter = (RelativeLayout)view.findViewById(R.id.rl_filter);
+            rlFilter.setOnClickListener(this);
+            llMain.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    menuPW.dismiss();
+                }
+            });
+            menuPW = new SimplePopupWindow(activity, view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            menuPW.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            menuPW.setOutsideTouchable(true);
+            menuPW.setAnimationStyle(R.style.popwin_anim_bottom_style);
+            menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
         }else {
-            super.onBackPressed();
+           /* if (menuPW.isShowing()){
+                menuPW.dismiss();
+            }else {
+                menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
+            }*/ menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
         }
     }
-
 }
