@@ -58,8 +58,8 @@ public class NomalRenderer extends GPUImageRenderer implements SurfaceTexture.On
     @Override
     protected void operateDate(IntBuffer intBuffer,int width,int height){
         //OpencvHelper.gray(intBuffer.array(), width, height);
-        //OpencvHelper.checkSkin(intBuffer.array(), width, height,100);
-        OpencvHelper.dermabrasion(intBuffer.array(), width, height,100);
+        //OpencvHelper.checkSkin(intBuffer.array(), width, height,10);
+        //OpencvHelper.dermabrasion(intBuffer.array(), width, height,10);
     }
 
 }

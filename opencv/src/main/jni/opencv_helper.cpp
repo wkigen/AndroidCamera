@@ -89,20 +89,15 @@ JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasion(
                 int jMin = j - radius <= 1 ? 1 : j - radius;
 
                 int squar = (iMax - iMin + 1)*(jMax - jMin + 1);
-                int i4 = iMax*width+jMax;
-                int i3 = (iMin-1)*width+(jMin-1);
-                int i2 = iMax*width+(jMin-1);
-                int i1 = (iMin-1)*width+jMax;
+                int i4 = (iMax*width+jMax)*3;
+                int i3 = ((iMin-1)*width+(jMin-1))*3;
+                int i2 = (iMax*width+(jMin-1))*3;
+                int i1 = ((iMin-1)*width+jMax)*3;
 
-                float m = (integralPtr[i4]
-                           + integralPtr[i3]
-                           - integralPtr[i2]
-                           - integralPtr[i1]) / squar;
+                float m = (integralPtr[i4] + integralPtr[i3] - integralPtr[i2] - integralPtr[i1]) / squar;
 
-                float v = (integralSqrPtr[i4]
-                           + integralSqrPtr[i3]
-                           - integralSqrPtr[i2]
-                           - integralSqrPtr[i1]) / squar - m*m;
+                float v = (integralSqrPtr[i4] + integralSqrPtr[i3] - integralSqrPtr[i2] - integralSqrPtr[i1]) / squar - m*m;
+
                 float k = v / (v + level);
 
                 yuvPtr[offset * 3] = ceil(m - k * m + k * yuvPtr[offset * 3]);
