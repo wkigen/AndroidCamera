@@ -15,6 +15,8 @@ JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_checkSkin(
 JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasion(
         JNIEnv *env, jclass obj, jintArray, jint, jint,jint);
 
+JNIEXPORT void JNICALL Java_org_opencv_jni_OpencvHelper_dermabrasionRGBA(
+        JNIEnv *env, jclass obj, jintArray, jint, jint,jint);
 
 #ifdef __cplusplus
 }

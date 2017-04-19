@@ -11,6 +11,7 @@ namespace vk{
 
         static void checkIsSkin(uint8_t* src,uint8_t* des ,int width,int height);
 
+        static void integral(uint8_t* src,uint64_t* des ,uint64_t* desSqr, int width,int height);
     };
 
 
