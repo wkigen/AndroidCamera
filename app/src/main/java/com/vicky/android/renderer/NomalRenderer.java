@@ -36,7 +36,7 @@ public class NomalRenderer extends GPUImageRenderer implements SurfaceTexture.On
     public void onSurfaceCreated(final GL10 unused, final EGLConfig config) {
         super.onSurfaceCreated(unused,config);
 
-        CameraManager.getInstance().openFront();
+        CameraManager.getInstance().openBack();
         CameraManager.getInstance().setPreviewCallBack(this);
         CameraManager.getInstance().setDisplayOrientation(activity);
 
@@ -59,7 +59,7 @@ public class NomalRenderer extends GPUImageRenderer implements SurfaceTexture.On
     protected void operateDate(IntBuffer intBuffer,int width,int height){
         //OpencvHelper.gray(intBuffer.array(), width, height);
         //OpencvHelper.checkSkin(intBuffer.array(), width, height,10);
-        //OpencvHelper.dermabrasion(intBuffer.array(), width, height,10);
+        OpencvHelper.dermabrasion(intBuffer.array(), width, height,10);
     }
 
 }
