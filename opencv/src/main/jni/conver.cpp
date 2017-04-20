@@ -23,7 +23,6 @@ namespace vk{
             to[offset] = (uint8_t)Blue;
             to[offset+1] = (uint8_t)Green;
             to[offset+2] = (uint8_t)Red;
-            //to[offset+3] = 0xff;
         }
     }
 

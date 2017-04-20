@@ -145,10 +145,10 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
     }
 
     private void showMenu(){
-        if (menuPW == null){
+        if (menuPW == null) {
             View view = getLayoutInflater().inflate(R.layout.item_menu, null);
             RelativeLayout llMain = (RelativeLayout) view.findViewById(R.id.ll_main);
-            RelativeLayout rlFilter = (RelativeLayout)view.findViewById(R.id.rl_filter);
+            RelativeLayout rlFilter = (RelativeLayout) view.findViewById(R.id.rl_filter);
             rlFilter.setOnClickListener(this);
             llMain.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,13 +160,8 @@ public class MainActivity extends BaseActivity<MainActivity, MainVM> implements 
             menuPW.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             menuPW.setOutsideTouchable(true);
             menuPW.setAnimationStyle(R.style.popwin_anim_bottom_style);
-            menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
-        }else {
-           /* if (menuPW.isShowing()){
-                menuPW.dismiss();
-            }else {
-                menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
-            }*/ menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
         }
+
+        menuPW.showAtLocation(flMain, Gravity.BOTTOM, 0, 0, false);
     }
 }

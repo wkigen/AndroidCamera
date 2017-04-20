@@ -18,12 +18,13 @@ namespace vk{
                 int offsetSrc = offestDes * 4;
 
                 uint8_t Red, Green, Blue;
-                Red = src[offsetSrc];
-                Green = src[offsetSrc+1];
-                Blue = src[offsetSrc+2];
+                Red = src[offsetSrc+1];
+                Green = src[offsetSrc+2];
+                Blue = src[offsetSrc+3];
 
                 //检测是不是皮肤
-                if (Red>95 && Green>40 && Blue>20 && Red > Green && Red > Blue &&
+                if (Blue>95 && Green>40 && Red>20
+                    && Red > Green && Red > Blue &&
                         abs(Red - Green) > 15)
                 {
                     des[offestDes]  = 255;
